@@ -1,0 +1,12 @@
+# Ignore all Terraform backup files
+*.tfbackup
+
+# Ignore all executable files
+*.exe
+
+.terraform
+
+.terraform/
+folder 
+.terraform.tfstate.lock.info
+.terraform.tfstate.backup
