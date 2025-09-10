@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "main" {
 resource "azurerm_virtual_machine" "server_vm" {
   name = "server"
   location = var.location
-  resource_group_name = var.resource_group_name
+    resource_group_name = var.azurerm_resource_group.name
 
   vm_size = "Standard_D2s_v3"
   network_interface_ids = [azurerm_network_interface.server-nic.id[0]]
@@ -39,7 +39,7 @@ resource "azurerm_virtual_machine" "server_vm" {
 resource "azurerm_network_interface" "server-nic" {
   name = "Server_nic"
   location = var.location
-  resource_group_name = var.location
+    resource_group_name = var.azurerm_resource_group.name
 
   ip_configuration {
     name = "ip_config_internal"
@@ -55,7 +55,7 @@ resource "azurerm_network_interface" "server-nic" {
 resource "azurerm_public_ip" "server_public_ip" {
   name = "server_public_ip"
   location = var.location
-  resource_group_name = var.location
+    resource_group_name = var.azurerm_resource_group.name
   allocation_method = "Static"
 lifecycle {
   prevent_destroy = false
